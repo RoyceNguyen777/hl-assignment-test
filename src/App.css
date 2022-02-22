@@ -1,5 +1,17 @@
+
+
+
 .justify-between {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.ant-message {
+  position: fixed;
+  top: 0px;
+  right: 40%;
+  margin: 20px;
+}
+.ant-message-notice-content {
+  margin: 5px;
 }

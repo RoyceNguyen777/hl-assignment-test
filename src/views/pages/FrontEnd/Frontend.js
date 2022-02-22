@@ -1,16 +1,42 @@
 import { Col, Row } from "antd";
-import React from "react";
+import React, { useState } from "react";
+import { signInWithPopup, signOut } from "firebase/auth";
+import "../../../App.css";
+import { colors, images } from "../../../assets";
+import { stories } from "../../../services/mockdata";
+import IButton from "../../components/IButton";
+import ITitle from "../../components/ITitle";
 import {
   Container,
   ContainerFluid,
 } from "../../components/styles/styledContainer";
-import "../../../App.css";
-import { colors, images } from "../../../assets";
-import ITitle from "../../components/ITitle";
-import IButton from "../../components/IButton";
 import { StyleParaph } from "../../components/styles/styleParaphrase";
+import { auth, provider } from "../../../services/firebase/config";
 
 export default function Frontend() {
+  const [listStory, setListStory] = useState(() => {
+    const filterlist = stories.filter((item) => item.key === 1)[0];
+    return filterlist;
+  });
+  const [username, setUsername] = useState({});
+  console.log(username.name);
+
+  const handleChangeStory = () => {
+    if (listStory.key === 1) {
+      const filterlist = stories.filter((item) => item.key === 2)[0];
+      setListStory(filterlist);
+    } else if (listStory.key === 2) {
+      const filterlist = stories.filter((item) => item.key === 3)[0];
+      setListStory(filterlist);
+    } else if (listStory.key === 3) {
+      const filterlist = stories.filter((item) => item.key === 4)[0];
+      setListStory(filterlist);
+    } else if (listStory.key === 4) {
+      const filterlist = stories.filter((item) => item.key === 5)[0];
+      setListStory(filterlist);
+    }
+  };
+
   return (
     <div>
       <Container>
@@ -19,13 +45,69 @@ export default function Frontend() {
             <Col span={12}>
               <img src={images.logo} alt={images.logo} width="55" />
             </Col>
-            <Col span={12}>Firebase</Col>
+            <Col span={12}>
+              <div className="justify-between">
+                <img
+                  src={username.photoURL}
+                  alt={username.photoURL}
+                  width="50"
+                  style={{
+                    marginRight: "10px",
+                  }}
+                />
+                <h4>{username.name}</h4>
+                {!username.name ? (
+                  <IButton
+                    title="Login "
+                    width="100px"
+                    color={colors.blue_btn}
+                    style={{
+                      color: colors.white_text,
+                      borderWidth: 0,
+                      margin: 0,
+                      padding: "5px",
+                      boxShadow: "none",
+                    }}
+                    onClick={() => {
+                      signInWithPopup(auth, provider)
+                        .then((result) => {
+                          setUsername({
+                            name: result.user.displayName,
+                            email: result.user.emai,
+                            photoURL: result.user.photoURL,
+                          });
+                        })
+                        .catch((error) => {
+                          console.log(error);
+                        });
+                    }}
+                  />
+                ) : (
+                  <IButton
+                    title="Login Out "
+                    width="150px"
+                    color={colors.blue_btn}
+                    style={{
+                      color: colors.white_text,
+                      borderWidth: 0,
+                      margin: 0,
+                      padding: "5px",
+                      boxShadow: "none",
+                      marginLeft: "10px",
+                    }}
+                    onClick={() => {
+                      setUsername("");
+                    }}
+                  />
+                )}
+              </div>
+            </Col>
           </div>
         </Row>
       </Container>
       <ContainerFluid
         style={{
-          textAlign: "end",
+          textAlign: "center",
           color: colors.white_text,
           marginBottom: "70px",
         }}
@@ -42,18 +124,14 @@ export default function Frontend() {
           <Col>
             <p
               style={{
-                color: colors.dark_text,
-                fontSize: 20,
+                color: listStory.key === 5 ? colors.green_bg : colors.dark_text,
+                textAlign: listStory.key === 5 ? "center" : "none",
+                fontWeight: listStory.key === 5 ? "900" : "unset",
+                fontSize: listStory.key === 5 ? 30 : 20,
                 lineHeight: "1.7rem",
               }}
             >
-              A child asked his father, "How were people born?" So his father
-              said, "Adam and Eve made babies, then their babies became adults
-              and made babies, and so on." The child then went to his mother,
-              asked her the same question and she told him, "We were monkeys
-              then we evolved to become like we are now." The child ran back to
-              his father and said, "You lied to me!" His father replied, "No,
-              your mom was talking about her side of the family."
+              {listStory.value}
             </p>
           </Col>
           <Col>
@@ -68,6 +146,10 @@ export default function Frontend() {
                   borderWidth: 0,
                   boxShadow: "none",
                 }}
+                onClick={() => {
+                  handleChangeStory();
+                  // record the vote in database
+                }}
               />
               <IButton
                 title="this is not Funny!"
@@ -78,6 +160,10 @@ export default function Frontend() {
                   color: colors.white_text,
                   borderWidth: 0,
                   boxShadow: "none",
+                }}
+                onClick={() => {
+                  handleChangeStory();
+                  // record the vote in database
                 }}
               />
             </div>

@@ -7,9 +7,11 @@ const Container = styled.div`
 const ContainerFluid = styled.div`
   margin: 0px;
   padding: 90px 480px;
+  
   background-color: ${colors.green_bg};
-  @media (min-width: 740px) and (max-width: 1300px) {
+  @media (max-width: 1300px) {
     padding: 45px 120px;
-  }
+  };
+
 `;
 export { Container, ContainerFluid };
