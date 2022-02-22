@@ -10,6 +10,7 @@ const StyledIButton = styled(Button)`
   font-weight: 900;
   color: ${colors.white_text};
   box-shadow: 5px 5px 5px ${colors.dark_text};
-  margin: 25px;  
+  margin: 25px;
+  cursor: pointer;
 `;
 export { StyledIButton };
