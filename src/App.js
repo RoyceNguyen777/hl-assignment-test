@@ -3,7 +3,7 @@ import "./App.css";
 import routes from "./views/containers/_routes";
 
 function App() {
-  const routeComponents = routes.map(({ path, element, exact }, index) => (
+  const routeComponents = routes.map(({ path, element, exact }) => (
     <Route path={path} element={element} exact={exact} />
   ));
 
