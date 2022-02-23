@@ -1,17 +1,17 @@
 import { Col, Row } from "antd";
-import React, { useState } from "react";
-import { signInWithPopup, signOut } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import "../../../App.css";
 import { colors, images } from "../../../assets";
+import { auth, provider } from "../../../services/firebase/config";
 import { stories } from "../../../services/mockdata";
 import IButton from "../../components/IButton";
 import ITitle from "../../components/ITitle";
 import {
   Container,
-  ContainerFluid,
+  ContainerFluid
 } from "../../components/styles/styledContainer";
 import { StyleParaph } from "../../components/styles/styleParaphrase";
-import { auth, provider } from "../../../services/firebase/config";
 
 export default function Frontend() {
   const [listStory, setListStory] = useState(() => {
@@ -20,6 +20,10 @@ export default function Frontend() {
   });
   const [username, setUsername] = useState({});
   console.log(username.name);
+
+  useEffect(() => {
+    document.title = "FRONT END - TEST";
+  },[]);
 
   const handleChangeStory = () => {
     if (listStory.key === 1) {
