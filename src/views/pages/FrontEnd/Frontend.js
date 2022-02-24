@@ -51,11 +51,11 @@ export default function Frontend() {
             </Col>
             <Col span={12}>
               <div className="justify-between">
-                <div style={{ marginRight: 15 , lineHeight: "1.2rem" }}>
+                <div style={{ marginRight: 15, lineHeight: "1.2rem" }}>
                   <p style={{ margin: 0, color: colors.dark_text }}>
                     <i>Handicrafted by</i>
                   </p>
-                  <p style={{ margin: 0, textAlign: "end", color:"#000000" }}>
+                  <p style={{ margin: 0, textAlign: "end", color: "#000000" }}>
                     Jim HLS
                   </p>
                 </div>
@@ -89,13 +89,14 @@ export default function Frontend() {
                 fontWeight: listStory.key === 5 ? "900" : "unset",
                 fontSize: listStory.key === 5 ? 30 : 20,
                 lineHeight: "1.7rem",
+                marginBottom: "45px",
               }}
             >
               {listStory.value}
             </p>
           </Col>
           <Col>
-            <div className="flex" style={{ margin: "100px " }}>
+            <div className="flex" style={{ margin: "80px " }}>
               <IButton
                 title="this is Funny!"
                 width="350px"
@@ -135,8 +136,8 @@ export default function Frontend() {
         <Row>
           <StyleParaph>
             This website is created as part of Hlsolutions program. The
-            materials contained on this website are provided for general
-            information only and do not constitute any form of advice. HLS
+            materials  contained on this website are provided for general
+            information only and <br /> do not constitute  any form of advice. HLS
             assumes no responsibility for the accuracy of any particular
             statement and accepts no liability for any loss or damage which may
             arise from reliance on the information contained on this site.
