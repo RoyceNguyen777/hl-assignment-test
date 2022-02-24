@@ -135,12 +135,21 @@ export default function Frontend() {
       <Container>
         <Row>
           <StyleParaph>
-            This website is created as part of Hlsolutions program. The
-            materials  contained on this website are provided for general
-            information only and  do not constitute  any form of advice. HLS
-            assumes no responsibility for the accuracy of any particular
-            statement and accepts no liability for any loss or damage which may
-            arise from reliance on the information contained on this site.
+            <span style={{ margin: "0px 15px" }}>
+              This website is created as part of Hlsolutions program. The
+              materials contained on this website are provided for general
+            </span>
+            <br />
+            <span>
+              information only and do not constitute any form of advice. HLS
+              assumes no responsibility for the accuracy of any particular
+              statement and
+            </span>
+            <br />
+            <span style={{ margin: "0px 15px" }}>
+              accepts no liability for any loss or damage which may arise from
+              reliance on the information contained on this site.
+            </span>
             <p style={{ color: "#646464" }}> Copyright 2021 HLS</p>
           </StyleParaph>
         </Row>
