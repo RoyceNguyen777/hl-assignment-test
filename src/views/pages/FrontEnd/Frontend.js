@@ -9,7 +9,7 @@ import IButton from "../../components/IButton";
 import ITitle from "../../components/ITitle";
 import {
   Container,
-  ContainerFluid
+  ContainerFluid,
 } from "../../components/styles/styledContainer";
 import { StyleParaph } from "../../components/styles/styleParaphrase";
 
@@ -23,7 +23,7 @@ export default function Frontend() {
 
   useEffect(() => {
     document.title = "FRONT END - TEST";
-  },[]);
+  }, []);
 
   const handleChangeStory = () => {
     if (listStory.key === 1) {
@@ -44,66 +44,22 @@ export default function Frontend() {
   return (
     <div>
       <Container>
-        <Row>
+        <Row style={{ marginTop: "20px" }}>
           <div className="justify-between" style={{ marginBottom: "12px" }}>
             <Col span={12}>
               <img src={images.logo} alt={images.logo} width="55" />
             </Col>
             <Col span={12}>
               <div className="justify-between">
-                <img
-                  src={username.photoURL}
-                  alt={username.photoURL}
-                  width="50"
-                  style={{
-                    marginRight: "10px",
-                  }}
-                />
-                <h4>{username.name}</h4>
-                {!username.name ? (
-                  <IButton
-                    title="Login "
-                    width="100px"
-                    color={colors.blue_btn}
-                    style={{
-                      color: colors.white_text,
-                      borderWidth: 0,
-                      margin: 0,
-                      padding: "5px",
-                      boxShadow: "none",
-                    }}
-                    onClick={() => {
-                      signInWithPopup(auth, provider)
-                        .then((result) => {
-                          setUsername({
-                            name: result.user.displayName,
-                            email: result.user.emai,
-                            photoURL: result.user.photoURL,
-                          });
-                        })
-                        .catch((error) => {
-                          console.log(error);
-                        });
-                    }}
-                  />
-                ) : (
-                  <IButton
-                    title="Login Out "
-                    width="150px"
-                    color={colors.blue_btn}
-                    style={{
-                      color: colors.white_text,
-                      borderWidth: 0,
-                      margin: 0,
-                      padding: "5px",
-                      boxShadow: "none",
-                      marginLeft: "10px",
-                    }}
-                    onClick={() => {
-                      setUsername("");
-                    }}
-                  />
-                )}
+                <div style={{ marginRight: 15 , lineHeight: "1.2rem" }}>
+                  <p style={{ margin: 0, color: colors.dark_text }}>
+                    <i>Handicrafted by</i>
+                  </p>
+                  <p style={{ margin: 0, textAlign: "end", color:"#000000" }}>
+                    Jim HLS
+                  </p>
+                </div>
+                <img src={images.logoLogin} alt={images.logoLogin} width="55" />
               </div>
             </Col>
           </div>
@@ -139,7 +95,7 @@ export default function Frontend() {
             </p>
           </Col>
           <Col>
-            <div className="justify-between" style={{ margin: "100px " }}>
+            <div className="flex" style={{ margin: "100px " }}>
               <IButton
                 title="this is Funny!"
                 width="350px"
